@@ -22,7 +22,7 @@ awscli ec2 create-internet-gateway --tag-specifications ResourceType=internet-ga
 awscli ec2 create-ipam-resource-discovery --description 'Example-resource-discovery' --tag-specifications 'ResourceType=ipam-resource-discovery,Tags=[{Key=cost-center,Value=cc123}]' --operating-regions RegionName='us-west-1' RegionName='us-west-2' --region us-east-1
 awscli ec2 create-ipam --description "Example description" --operating-regions "RegionName=us-east-2" "RegionName=us-west-1" --tag-specifications 'ResourceType=ipam,Tags=[{Key=Name,Value=ExampleIPAM}]'
 awscli ec2 create-ipam --description "Example description" --operating-regions "RegionName=us-east-2" "RegionName=us-west-1" --tag-specifications ResourceType=ipam,Tags=[{Key=Name,Value=ExampleIPAM}]
-awscli ec2 create-key-pair --key-name MyKeyPair --query "KeyMaterial" --output text > MyKeyPair.pem
+awscli ec2 create-key-pair --key-name MyKeyPair --query "KeyMaterial" --output text > /dev/null
 awscli ec2 create-key-pair --key-name MyKeyPair --key-type ed25519
 awscli ec2 create-launch-template --launch-template-name TemplateForWebServer --version-description WebVersion1 --launch-template-data '{"NetworkInterfaces":[{"AssociatePublicIpAddress":true,"DeviceIndex":0,"Ipv6AddressCount":1,"SubnetId":"subnet-7b16de0c"}],"ImageId":"ami-8c1be5f6","InstanceType":"t2.small","TagSpecifications":[{"ResourceType":"instance","Tags":[{"Key":"purpose","Value":"webserver"}]}]}'
 awscli ec2 create-launch-template --launch-template-name TemplateForAutoScaling --version-description AutoScalingVersion1 --launch-template-data '{"NetworkInterfaces":[{"DeviceIndex":0,"AssociatePublicIpAddress":true,"Groups":["sg-7c227019,sg-903004f8"],"DeleteOnTermination":true}],"ImageId":"ami-b42209de","InstanceType":"m4.large","TagSpecifications":[{"ResourceType":"instance","Tags":[{"Key":"environment","Value":"production"},{"Key":"purpose","Value":"webserver"}]},{"ResourceType":"volume","Tags":[{"Key":"environment","Value":"production"},{"Key":"cost-center","Value":"cc123"}]}],"BlockDeviceMappings":[{"DeviceName":"/dev/sda1","Ebs":{"VolumeSize":100}}]}' --region us-east-1
@@ -235,10 +235,10 @@ awscli ec2 get-default-credit-specification --instance-family t2
 awscli ec2 get-ebs-default-kms-key-id
 awscli ec2 get-ebs-encryption-by-default
 awscli ec2 get-image-block-public-access-state --region us-east-1
-awscli ec2 get-instance-types-from-instance-requirements --region us-east-1 --generate-cli-skeleton input > attributes.json
+awscli ec2 get-instance-types-from-instance-requirements --region us-east-1 --generate-cli-skeleton input > /dev/null
 awscli ec2 get-serial-console-access-status
 awscli ec2 get-snapshot-block-public-access-state
-awscli ec2 get-spot-placement-scores --region us-east-1 --generate-cli-skeleton input > attributes.json
+awscli ec2 get-spot-placement-scores --region us-east-1 --generate-cli-skeleton input > /dev/null
 awscli ec2 get-vpn-connection-device-types --query "VpnConnectionDeviceTypes[?Vendor==\Palo Alto Networks\]"
 awscli ec2 import-image --disk-containers Format=ova,UserBucket="{S3Bucket=my-import-bucket,S3Key=vms/my-server-vm.ova}"
 awscli ec2 import-key-pair --key-name "my-key" --public-key-material fileb://~/.ssh/my-key.pub
